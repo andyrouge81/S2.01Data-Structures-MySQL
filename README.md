@@ -146,8 +146,8 @@ Before running the project, make sure you have:
 
 1. **Clone or download** this repository:
    ```bash
-   git clone https://github.com/andyrouge81/optical.git
-   cd optician-database
+   git clone (https://github.com/andyrouge81/S2.01Data-Structures-MySQL.git)
+   cd S2.01Data-Structures-MySQL
 
 2. Use MySQL Workbench to visualize tables and relationships.
 
