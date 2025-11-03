@@ -1,0 +1,36 @@
+- Llista el total de factures d'un client/a en un període determinat.
+- List the total number of invoices for a customer within a specific period.
+
+USE OPTIC;
+SELECT * 
+FROM sale s
+JOIN clients c ON s.clients_client_id = c.client_id
+WHERE c.name = 'Marta Ruiz' 
+	AND s.registration_sale BETWEEN '2024-12-01' AND '2025-08-01' 
+
+- Llista els diferents models d'ulleres que ha venut un empleat/da durant un any.
+- List the different models of glasses that an employee has sold during a given year.
+
+USE OPTIC;
+SELECT g.brand, 
+g.color_lens, 
+g.price, 
+g.glasses_frame,
+s.registration_sale
+FROM sale s
+JOIN glasses g ON s.glasses_glasses_id = g.glasses_id
+WHERE s.name_employee = 'Javier López' 
+	AND s.registration_sale BETWEEN '2024-10-10'AND '2025-10-10'  
+
+
+- Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
+- List the different suppliers who have provided glasses that were successfully sold by the optical store.
+
+USE OPTIC;
+SELECT DISTINCT s.name AS Supplier,
+g.brand AS Brand,
+a.name_client AS Client
+FROM supplier s
+JOIN glasses g ON s.supplier_id = g.supplier_supplier_id
+JOIN sale a ON a.glasses_glasses_id =  g.glasses_id
+

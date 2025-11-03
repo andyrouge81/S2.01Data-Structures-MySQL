@@ -1,0 +1,24 @@
+1.- Llista quants productes de categoria 'Begudes' s'han venut en una determinada localitat.
+	List how many products in the 'Drinks' category have been sold in a specific location.
+
+SELECT 
+    ci.name AS ciudad,
+    p.type as Tipo,
+    SUM(op.quantity) AS total_Bebidas_venta
+FROM orders_product op
+JOIN product p ON op.product_id = p.product_id
+JOIN orders o ON op.orders_id = o.orders_id
+JOIN client c ON o.client_id = c.client_id
+JOIN city ci ON c.city_id = ci.city_id
+WHERE p.type = 'drink'
+  AND ci.name = 'Barcelona'  
+GROUP BY ci.name;
+
+
+2. - Llista quantes comandes ha efectuat un determinat empleat/da.
+	List how many orders a specific employee has processed.
+
+SELECT e.name, COUNT(o.orders_id) AS total_orders
+FROM orders o
+JOIN employee e ON o.employee_id = e.employee_id
+GROUP BY e.employee_id;
